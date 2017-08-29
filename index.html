@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lowongan | Bilangan Prima</title>
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2"></div>
+                
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                    <br>
+                    <form>
+                        <div class="form-group">
+                            <label for="number">Nomor</label>
+                            <input type="number" min="1" max="100" class="form-control" id="number" maxlength="3">
+                        </div>
+                        <button type="button" class="btn btn-default">Submit</button>
+                    </form>
+
+                    <br>
+
+                    <div id="result">
+                        Result Will Be Shown Here :
+                        <br><span></span>
+                    </div>
+                </div>
+                
+                <div class="col-sm-2 col-md-2 col-lg-2"></div>
+                
+            </div>
+        </div>
+        
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.min.js?v=00"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("button").click(function(){
+                    var num = $("#number").val();
+                    if(num < 1 && num > 100){
+                        alert("Range nomor 1 - 100 Saja");
+                    }
+                    else {
+                        var str = "";
+                        for(i=1; i<=num; i++){
+                            if(i==1 && num==1){
+                                str = "Tidak ada bilangan Prima";
+                            }
+                            else if(i==2){
+                                str = str+" "+i;
+                            }else if(i!=1){
+                                var check = true;
+                                for(j=2; j<i; j++){
+                                    if(i%j==0){
+                                        check = false;
+                                        break;
+                                    }
+                                }
+                                if(check != false){
+                                    str = str+" "+i;
+                                }
+                            }
+                        }
+                        str = str+"<br>Hire Me, Please :)";
+                        $("#result span").html(str);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
